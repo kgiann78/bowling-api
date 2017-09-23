@@ -28,6 +28,8 @@ gem 'puma', '~> 3.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+    # Testing framework
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
@@ -35,6 +37,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  # A fixtures replacement with a more straightforward syntax
+  gem 'factory_girl_rails', '~> 4.0'
+  # Provides RSpec with additional matcher
+  gem 'shoulda-matchers', '~> 3.1'
+  # A library for generating fake data. We'll use this to generate test data
+  gem 'faker'
+  # It cleans the test database to ensure a clean state in each test suite.
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
