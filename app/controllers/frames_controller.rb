@@ -1,7 +1,7 @@
 class FramesController < ApplicationController
   before_action :set_game
   before_action :set_game_player
-  before_action :set_game_player_frame, only: [:show, :update, :destroy]
+  before_action :set_game_player_frame, only: [:show, :update, :destroy, :roll]
 
   # GET /games/:game_id/players/:player_id/frames
   def index
@@ -15,7 +15,8 @@ class FramesController < ApplicationController
 
   # POST /games/:game_id/players/:player_id/frames
   def create
-    @player.frames.create!(frame_params)
+    # if frame_params[:number] < 10 && 
+    @frame = @player.frames.find_or_create_by!(number: frame_params[:number], player_id: @player.id)
     json_response(@frame, :created)
   end
 
@@ -29,6 +30,16 @@ class FramesController < ApplicationController
   def destroy
     @frame.destroy
     head :no_content
+  end
+
+  def roll
+    # @frame = @player.frames.find_by!(id: params[:id]) if @player
+    frame_params = Frame.roll(params[:pins], @frame)
+    @frame.update(frame_params)
+    # @score = Frame.roll(params[:pins])
+    # frame_params = {"score"=>@score}
+    json_response(@frame)
+    
   end
 
   private
@@ -46,7 +57,6 @@ class FramesController < ApplicationController
   end
 
   def set_game_player_frame
-  	# @player = @game.players.find_by!(id: params[:id]) if @game
     @frame = @player.frames.find_by!(id: params[:id]) if @player
   end
 end

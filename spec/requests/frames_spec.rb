@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Frames API' do
   # Initialize the test data
   let!(:game) { create(:game) }
-  let!(:player) { Player.create!(name: "Vangelis", score: 0, game_id: game.id) }
-  let!(:frames) { 10.times.map { |i| Frame.create!(number: i, score: 0, tries: 2, player_id: player.id ) } }
+  let!(:player) { Player.create!(name: "Vangelis", score: 10, game_id: game.id) }
+  let!(:frames) { FactoryGirl.create_list(:frame, 10, score: 1, tries: 2, player_id: player.id) }
+  # The following line is work arround when create_list above wasn't available
+  # let!(:frames) { 10.times.map { |i| Frame.create!(number: i, score: 0, tries: 2, player_id: player.id ) } }
 
   let(:game_id) { game.id }
   let(:player_id) { player.id }

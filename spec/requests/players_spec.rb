@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Players API' do
   # Initialize the test data
   let!(:game) { create(:game) }
-  # let!(:players) { FactoryGirl.create_list(:player, 20, game_id: game.id) }
-  let!(:players) { 20.times.map { |i| Player.create!(name: "foo#{i}", score: 4, game_id: game.id ) } }
+  let!(:players) { FactoryGirl.create_list(:player, 20, score: 10, game_id: game.id) }
+  # let!(:players) { 20.times.map { |i| Player.create!(name: "foo#{i}", score: 4, game_id: game.id ) } }
 
 
 
