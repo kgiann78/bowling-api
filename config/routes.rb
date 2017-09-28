@@ -5,13 +5,12 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     resources :games do
       resources :players do
-      	resources :frames do
           member do
             post :roll
-            post :update
-            get :show
-            delete :destroy
+            get :zeroizeAll
+            post :zeroize
           end
+      	resources :frames do
         end
       end
     end

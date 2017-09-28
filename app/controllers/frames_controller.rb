@@ -15,7 +15,6 @@ class FramesController < ApplicationController
 
   # POST /games/:game_id/players/:player_id/frames
   def create
-    # if frame_params[:number] < 10 && 
     @frame = @player.frames.find_or_create_by!(number: frame_params[:number], player_id: @player.id)
     json_response(@frame, :created)
   end
@@ -30,16 +29,6 @@ class FramesController < ApplicationController
   def destroy
     @frame.destroy
     head :no_content
-  end
-
-  def roll
-    # @frame = @player.frames.find_by!(id: params[:id]) if @player
-    frame_params = Frame.roll(params[:pins], @frame)
-    @frame.update(frame_params)
-    # @score = Frame.roll(params[:pins])
-    # frame_params = {"score"=>@score}
-    json_response(@frame)
-    
   end
 
   private
