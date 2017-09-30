@@ -32,23 +32,14 @@ class PlayersController < ApplicationController
 
   # POST /games/:game_id/players/:id/roll
   def roll
+    puts "Pins dropped in current roll: #{pin_params[:pins]}"
 
-    puts "#{:pins} = #{pin_params[:pins]}"
-    puts "#{@player.roll(pin_params[:pins], @player.frames)}" 
+    score = @player.roll(pin_params[:pins], @player.frames)
+    @player.score = score
     @player.save
-    # puts "#{@player.frames[1].isSpare()} + #{@player.frames[2].id}"
-    # # @frame = @player.frames.find_by!(id: params[:id]) if @player
-    # @previous = @frame.id-1
-    # @previous_frame = @player.frames[@previous]
-    # puts "previous frame (#{@frame.id} -> #{@previous_frame.id}) #{Frame.isStrike(@previous_frame)}"
-    # puts "is it spare? #{Frame.isSpare()}"
-    # puts "is it strike? #{Frame.isStrike(@previous_frame)}"
 
-    # frame_params = Frame.roll(params[:pins], @frame)
-    # # @frame.update(frame_params)
-    # # # @score = Frame.roll(params[:pins])
-    # # # frame_params = {"score"=>@score}
-    # # json_response(@frame)
+    puts "total score for player is #{@player.score}"
+    json_response(@player)
     
   end
 
