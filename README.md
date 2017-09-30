@@ -43,3 +43,5 @@ The following endpoints are available:
     * POST /games/game_id/players/player_id/frames - adds a new frame to a specific game and specific player (json schema example for frame { "number":1, "tries":2, "score":0 })
     * PUT /games/game_id/players/player_id/frames/id - update a specific frame
     * DELETE /games/game_id/players/player_id/frames/id - deletes a specific frame
+
+Additionally, you will find a postman collection (bowling.postman_collection.json) where you can test API's endpoints
