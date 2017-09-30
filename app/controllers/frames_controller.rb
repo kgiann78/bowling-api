@@ -15,7 +15,7 @@ class FramesController < ApplicationController
 
   # POST /games/:game_id/players/:player_id/frames
   def create
-    @frame = @player.frames.find_or_create_by!(number: frame_params[:number], player_id: @player.id)
+    @frame = @player.frames.find_or_create_by!(number: frame_params[:number], tries: 2, score: 0, player_id: @player.id)
     json_response(@frame, :created)
   end
 

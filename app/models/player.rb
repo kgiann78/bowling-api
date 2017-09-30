@@ -9,7 +9,6 @@ class Player < ApplicationRecord
   def init_frames
   	10.times { 
   		|i| Frame.create!(number: i + 1, score: 0, tries: 2, pins: 0, player_id: id ) 
-  		puts "You have initialized frame number #{i}!"
   	}
     
   end
@@ -63,7 +62,6 @@ class Player < ApplicationRecord
   end
 
   def bonusFrame(frames, pins)
-  	puts "THIS IS ONLY BONUS FRAME"
   	bonus_frame_index = 9
   	frames[bonus_frame_index].tries = 0
   	frames[bonus_frame_index].score += pins

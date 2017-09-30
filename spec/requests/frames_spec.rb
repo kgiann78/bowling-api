@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Frames API' do
   # Initialize the test data
   let!(:game) { create(:game) }
-  let!(:player) { Player.create!(name: "Vangelis", score: 10, game_id: game.id) }
+  let!(:player) { FactoryGirl.create(:player, name: "Vangelis", score: 10, game_id: game.id) }
   let!(:frames) { FactoryGirl.create_list(:frame, 10, score: 1, tries: 2, player_id: player.id) }
   # The following line is work arround when create_list above wasn't available
   # let!(:frames) { 10.times.map { |i| Frame.create!(number: i, score: 0, tries: 2, player_id: player.id ) } }
@@ -22,7 +22,9 @@ RSpec.describe 'Frames API' do
       end
 
       it 'returns all player frames' do
-        expect(json.size).to eq(10)
+        expect(json.size).to eq(20) 
+        # The total frames should be 20 because when a player is created, 
+        # 10 frames are created and assigned to him
       end
     end
 
@@ -105,7 +107,7 @@ RSpec.describe 'Frames API' do
 
   # Test suite for PUT /games/:game_id/players/:player_id/frames/:id
   describe 'PUT /games/:game_id/players/:player_id/frames/:id' do
-    let(:valid_attributes) { { number: 10, tries: 3, score: 20 } }
+    let(:valid_attributes) { { number: 10, tries: 2, score: 20 } }
 
     before { put "/games/#{game_id}/players/#{player_id}/frames/#{id}", params: valid_attributes }
 
