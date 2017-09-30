@@ -1,24 +1,17 @@
-# README
+# Bowling API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This API provides some basic services for a standard bowling game.
 
-Things you may want to cover:
+* Rails 5.1.4 has been used with ruby 2.3.1 and gem 2.6.13
 
-* Ruby version
+* For testing this rspec and factory_girl has been used (with shoulda-matchers and faker) and additionally the database_cleaner.
 
-* System dependencies
+* Finally, in order to show information from multiple models, active_model_serializers has been used.
 
-* Configuration
+* To run tests:
 
-* Database creation
+   * bundle exec rspec
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* You may need previously to declare environment for testing:
+   
+   * bin/rails db:migrate RAILS_ENV=test
