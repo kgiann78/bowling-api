@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :players do
           member do
             post :roll
+            get :frame
             get :zeroizeAll
             post :zeroize
           end

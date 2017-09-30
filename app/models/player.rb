@@ -15,7 +15,7 @@ class Player < ApplicationRecord
 
   def roll(pins, frames)
   	frames.each do |frame|
-  		puts "#{frame.number}@tries:#{frame.tries}, pins:#{frame.pins}, score:#{frame.score} is spare? #{isSpare(frame)} is strike? #{isStrike(frame)}"
+  		# puts "#{frame.number}@tries:#{frame.tries}, pins:#{frame.pins}, score:#{frame.score} is spare? #{isSpare(frame)} is strike? #{isStrike(frame)}"
   		if frame.tries > 0 && !isStrike(frame) && !isSpare(frame)
   			return normalFrame(frames, frame.number - 1, pins) #frame.id, pins)# 
   		elsif frame.tries > 0 && frame.number == 10 && (isStrike(frame) || isSpare(frame))
@@ -23,6 +23,17 @@ class Player < ApplicationRecord
   		end
   	end
   	raise "No more rolls left"
+  end
+
+  def getCurrentFrame(frames)
+    frames.each do |frame|
+      if frame.tries > 0 && !isStrike(frame) && !isSpare(frame)
+        return frame
+      elsif frame.tries > 0 && frame.number == 10 && (isStrike(frame) || isSpare(frame))
+        return frame
+      end
+    end
+    return nil
   end
 
   def normalFrame(frames, normal_frame_index, pins)
@@ -132,7 +143,7 @@ class Player < ApplicationRecord
   		frame.score = 0
   		frame.tries = 2
   		frame.pins = 0
-  		puts "#{frame.number}@tries:#{frame.tries}, pins:#{frame.pins}, score:#{frame.score} is spare? #{isSpare(frame)} is strike? #{isStrike(frame)}"
+  		# puts "#{frame.number}@tries:#{frame.tries}, pins:#{frame.pins}, score:#{frame.score} is spare? #{isSpare(frame)} is strike? #{isStrike(frame)}"
   	end
   end
 
@@ -141,7 +152,7 @@ class Player < ApplicationRecord
   	frame.score = 0
   		frame.tries = 2
   		frame.pins = 0
-  		puts "#{frame.number}@tries:#{frame.tries}, pins:#{frame.pins}, score:#{frame.score} is spare? #{isSpare(frame)} is strike? #{isStrike(frame)}"
+  		# puts "#{frame.number}@tries:#{frame.tries}, pins:#{frame.pins}, score:#{frame.score} is spare? #{isSpare(frame)} is strike? #{isStrike(frame)}"
   end
 
   # validations
