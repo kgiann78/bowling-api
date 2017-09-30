@@ -1,0 +1,195 @@
+{
+	"variables": [],
+	"info": {
+		"name": "bowling",
+		"_postman_id": "ae2739d1-2cb8-dd97-aa1e-92204d67d026",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/games",
+			"request": {
+				"url": "http://localhost:3000/games",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"lane\":\"8\" }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games",
+			"request": {
+				"url": "http://localhost:3000/games",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1",
+			"request": {
+				"url": "http://localhost:3000/games/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"lane\":\"7\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players",
+			"request": {
+				"url": "http://localhost:3000/games/1/players",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/2",
+			"request": {
+				"url": "http://localhost:3000/games/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players",
+			"request": {
+				"url": "http://localhost:3000/games/1/players/4",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\":\"Alekos2\", \"score\":0 }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players/4/frame",
+			"request": {
+				"url": "http://localhost:3000/games/1/players/4/frame",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"pins\": 10}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players/4/roll",
+			"request": {
+				"url": "http://localhost:3000/games/1/players/4/roll",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"pins\": 5}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players/1/frames",
+			"request": {
+				"url": "http://localhost:3000/games/1/players/4",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"number\": 3 }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players/4/zeroizeAll",
+			"request": {
+				"url": "http://localhost:3000/games/1/players/4/zeroizeAll",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/games/1/players/4/zeroize",
+			"request": {
+				"url": "http://localhost:3000/games/1/players/4/zeroize",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"frame\": 6}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
